@@ -1,50 +1,65 @@
-Business Case: Delhivery - Feature Engineering
+Target is a globally renowned brand and a prominent retailer in the United States. Target makes itself a preferred shopping destination by offering outstanding value, inspiration, innovation and an exceptional guest experience that no other retailer can deliver.
 
-Delhivery is the largest and fastest-growing fully integrated player in India by revenue in Fiscal 2021. They aim to build the operating system for commerce, through a combination of world-class infrastructure, logistics operations of the highest quality, and cutting-edge engineering and technology capabilities.
-The Data team builds intelligence and capabilities using this data that helps them to widen the gap between the quality, efficiency, and profitability of their business versus their competitors.
+This particular business case focuses on the operations of Target in Brazil and provides insightful information about 100,000 orders placed between 2016 and 2018. The dataset offers a comprehensive view of various dimensions including the order status, price, payment and freight performance, customer location, product attributes, and customer reviews.
 
-The company wants to understand and process the data coming out of data engineering pipelines:
+By analyzing this extensive dataset, it becomes possible to gain valuable insights into Target's operations in Brazil. The information can shed light on various aspects of the business, such as order processing, pricing strategies, payment and shipping efficiency, customer demographics, product characteristics, and customer satisfaction levels.
 
-• Clean, sanitize and manipulate data to get useful features out of raw fields
-• Make sense out of the raw data and help the data science team to build forecasting models on it
+___________________________________________________________________________________________________________
 
-PROCESS-
+Dataset: https://drive.google.com/drive/folders/1TGEc66YKbD443nslRi1bWgVd238gJCnb
 
-Basic data cleaning and exploration:
+The data is available in 8 csv files:
 
-Handle missing values in the data.
+customers.csv
+sellers.csv
+order_items.csv
+geolocation.csv
+payments.csv
+reviews.csv
+orders.csv
+products.csv
 
-Analyze the structure of the data.
+___________________________________________________________________________________________________________
 
-Try merging the rows using the hint mentioned above.
 
-Build some features to prepare the data for actual analysis.
+___________________________________________________________________________________________________________
 
-Hypothesis testing/ Visual analysis to check various things.
+Problem Statement:
 
-Find outliers in the numerical variables (you might find outliers in almost all the variables), and check it using visual analysis
+Analysing the given dataset to extract valuable insights and provide actionable recommendations.
 
-Handle the outliers using the IQR method.
+Import the dataset and do usual exploratory analysis steps like checking the structure & characteristics of the dataset:
+Data type of all columns in the "customers" table.
+Get the time range between which the orders were placed.
+Count the Cities & States of customers who ordered during the given period.
+In-depth Exploration:
+Is there a growing trend in the no. of orders placed over the past years?
+Can we see some kind of monthly seasonality in terms of the no. of orders being placed?
+During what time of the day, do the Brazilian customers mostly place their orders? (Dawn, Morning, Afternoon or Night)
+0-6 hrs : Dawn
+7-12 hrs : Mornings
+13-18 hrs : Afternoon
+19-23 hrs : Night
+Evolution of E-commerce orders in the Brazil region:
+Get the month on month no. of orders placed in each state.
+How are the customers distributed across all the states?
+Impact on Economy: Analyze the money movement by e-commerce by looking at order prices, freight and others.
+Get the % increase in the cost of orders from year 2017 to 2018 (include months between Jan to Aug only).
+You can use the "payment_value" column in the payments table to get the cost of orders.
+Calculate the Total & Average value of order price for each state.
+Calculate the Total & Average value of order freight for each state.
+Analysis based on sales, freight and delivery time.
+Find the no. of days taken to deliver each order from the order’s purchase date as delivery time.
+Also, calculate the difference (in days) between the estimated & actual delivery date of an order.
+Do this in a single query.
 
-Do one-hot encoding of categorical variables (like route_type)
-
-Normalize/ Standardize the numerical features using MinMaxScaler or StandardScaler.
-
-Problem Statement and perform Exploratory Data Analysis 
-
-Definition of problem (as per given problem statement with additional views)
-Observations on shape of data, data types of all the attributes, conversion of categorical attributes to 'category' (If required), missing value detection, statistical summary.
-
-Visual Analysis (distribution plots of all the continuous variable(s), boxplots of all the categorical variables)
-
-Insights based on EDA
-
-Comments on range of attributes, outliers of various attributes
-
-Comments on the distribution of the variables and relationship between them
-
-Comments for each univariate and bivariate plot
-
-Business Insights
-
-Recommendations - Actionable items for business
+Calculate the delivery time and the difference between the estimated & actual delivery date using the given formula:
+time_to_deliver = order_delivered_customer_date - order_purchase_timestamp
+diff_estimated_delivery = order_delivered_customer_date - order_estimated_delivery_date
+Find out the top 5 states with the highest & lowest average freight value.
+Find out the top 5 states with the highest & lowest average delivery time.
+Find out the top 5 states where the order delivery is really fast as compared to the estimated date of delivery.
+Using the difference between the averages of actual & estimated delivery date to figure out how fast the delivery was for each state.
+Analysis based on the payments:
+Find the month on month no. of orders placed using different payment types.
+Find the no. of orders placed on the basis of the payment installments that have been paid.
